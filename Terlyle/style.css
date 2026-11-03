@@ -7,10 +7,9 @@ html {
 }
 
 body {
-  margin: 0; /* Removes default body margins so the top bar touches the very edge */
+  margin: 0;
 }
 
-/* Top Navigation Bar Styling */
 .top-nav {
   background-color: #ffffff;
   padding: 1rem 2rem;
