@@ -29,6 +29,18 @@ body {
   text-decoration: underline;
 }
 
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+main img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
 footer {
   background-color: white;
   color: black;
