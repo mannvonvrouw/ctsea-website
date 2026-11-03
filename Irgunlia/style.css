@@ -9,3 +9,7 @@ footer {
   color: black;
   font-family: monospace;
 }
+
+img {
+  width: 200px;
+}
