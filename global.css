@@ -39,6 +39,10 @@ main img {
   margin-top: 1rem;
 }
 
+a {
+  color: #2a2a2a
+}
+
 footer {
   background-color: #1a1a1a;
   color: white;
