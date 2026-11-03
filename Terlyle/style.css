@@ -11,21 +11,21 @@ body {
 }
 
 .top-nav {
-  background-color: #000000;
+  background-color: #1a1a1a;
   padding: 1rem 2rem;
   display: flex;
   gap: 2rem;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #333;
 }
 
 .top-nav a {
-  color: #FFFFFF;
+  color: #e0e0e0;
   text-decoration: none;
   font-weight: bold;
 }
 
 .top-nav a:hover {
-  color: #DDDDDD;
+  color: #ffffff;
   text-decoration: underline;
 }
 
