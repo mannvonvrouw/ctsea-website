@@ -18,7 +18,8 @@ async function updateCat() {
 
         let html = fs.readFileSync(filePath, 'utf8');
 
-        html = html.replace(/id="cat-img"\s+src="[^"]*"/, `id="cat-img" src="${catUrl}"`);
+        const newImgTag = `<img id="cat-img" src="${catUrl}" alt="Cat of the Day" style="max-width: 100%; height: auto;">`;
+        html = html.replace(/<img[^>]*id="cat-img"[^>]*>/, newImgTag);
         
         html = html.replace(/<p id="cat-breed">.*?<\/p>/, `<p id="cat-breed">Breed: ${breedName}</p>`);
 
