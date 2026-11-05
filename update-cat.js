@@ -5,7 +5,13 @@ const filePath = path.join(__dirname, 'cat-of-the-day', 'index.html');
 
 async function updateCat() {
     try {
+        console.log("Fetching cat from API...");
         const response = await fetch('https://api.thecatapi.com/v1/images/search?has_breeds=true');
+        
+        if (!response.ok) {
+            throw new Error(`API responded with status: ${response.status}`);
+        }
+
         const data = await response.json();
         
         if (!data || data.length === 0) {
@@ -16,6 +22,13 @@ async function updateCat() {
         const catUrl = cat.url;
         const breedName = (cat.breeds && cat.breeds.length > 0) ? cat.breeds[0].name : "Unknown Breed";
 
+        console.log(`Fetched cat URL: ${catUrl}`);
+        console.log(`Fetched breed: ${breedName}`);
+
+        if (!fs.existsSync(filePath)) {
+            throw new Error(`HTML file not found at path: ${filePath}`);
+        }
+
         let html = fs.readFileSync(filePath, 'utf8');
 
         const newImgTag = `<img id="cat-img" src="${catUrl}" alt="Cat of the Day" style="max-width: 100%; height: auto;">`;
@@ -24,9 +37,9 @@ async function updateCat() {
         html = html.replace(/<p id="cat-breed">.*?<\/p>/, `<p id="cat-breed">Breed: ${breedName}</p>`);
 
         fs.writeFileSync(filePath, html, 'utf8');
-        console.log(`Updated Cat of the Day: ${catUrl}`);
+        console.log("Successfully updated index.html");
     } catch (error) {
-        console.error("Failed to update cat:", error);
+        console.error("FAILED TO UPDATE CAT:", error.message);
         process.exit(1);
     }
 }
